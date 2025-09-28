@@ -3188,7 +3188,6 @@ public class EnigmaticEventHandler {
 
 	/**
 	 * Calculates the chance for Axe of Executioner to behead an enemy.
-	 *
 	 * @param lootingLevel Amount of looting levels applied to axe or effective otherwise.
 	 * @return True if chance works and head should drop, false otherwise.
 	 * @author Integral
