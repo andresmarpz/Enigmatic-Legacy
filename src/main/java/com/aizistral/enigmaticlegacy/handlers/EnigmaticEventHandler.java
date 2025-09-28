@@ -1239,7 +1239,7 @@ public class EnigmaticEventHandler {
 				POSTMORTAL_POSESSIONS.put(player, EnigmaticItems.ASCENSION_AMULET);
 			}
 
-			if (SuperpositionHandler.hasCurio(player, EnigmaticItems.CURSED_STONE || SuperpositionHandler.hasItem(player, EnigmaticItems.CURSED_STONE))) {
+			if (SuperpositionHandler.hasCurio(player, EnigmaticItems.CURSED_STONE) || SuperpositionHandler.hasItem(player, EnigmaticItems.CURSED_STONE)) { 
 				POSTMORTAL_POSESSIONS.put(player, EnigmaticItems.CURSED_STONE);
 
 				for (List<ItemStack> list : player.getInventory().compartments) {
@@ -1338,10 +1338,10 @@ public class EnigmaticEventHandler {
 
 					boolean confirmLavaPool = true;
 
-					for(int i = -3; i <= 2; ++i) {
+					for(int i = -1; i <= 1; ++i) {
 						final int fi = i;
 
-						boolean checkArea = BlockPos.betweenClosedStream(surfacePos.offset(-3, i, -3), surfacePos.offset(3, i, 3))
+						boolean checkArea = BlockPos.betweenClosedStream(surfacePos.offset(-1, i, -1), surfacePos.offset(1, i, 1))
 								.map(blockPos -> {
 									if (fi <= 0)
 										return this.isThereLava(player.level, blockPos);
