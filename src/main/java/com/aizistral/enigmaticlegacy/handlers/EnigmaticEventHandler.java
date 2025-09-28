@@ -1239,12 +1239,13 @@ public class EnigmaticEventHandler {
 				POSTMORTAL_POSESSIONS.put(player, EnigmaticItems.ASCENSION_AMULET);
 			}
 
-			if (SuperpositionHandler.hasItem(player, EnigmaticItems.CURSED_STONE)) {
+			if (SuperpositionHandler.hasCurio(player, EnigmaticItems.CURSED_STONE || SuperpositionHandler.hasItem(player, EnigmaticItems.CURSED_STONE)) {
 				POSTMORTAL_POSESSIONS.put(player, EnigmaticItems.CURSED_STONE);
 
 				for (List<ItemStack> list : player.getInventory().compartments) {
 					for (ItemStack itemstack : list) {
 						if (!itemstack.isEmpty() && itemstack.getItem() == EnigmaticItems.CURSED_STONE) {
+							SuperpositionHandler.setPersistentBoolean(player, "HadUnholyStoneOnDeath", true);
 							itemstack.setCount(0);
 						}
 					}
@@ -1319,7 +1320,7 @@ public class EnigmaticEventHandler {
 						getEnchantmentLevel(Enchantments.VANISHING_CURSE) <= 0, DropRule.ALWAYS_KEEP);
 			}
 
-			if (this.hadUnholyStone(player) && player.level.dimension() == PROXY.getNetherKey()) {
+			if ((this.hadUnholyStone(player) || SuperpositionHandler.getPersistentBoolean(player, "HadUnholyStoneOnDeath", false)) && player.level.dimension() == PROXY.getNetherKey()) {
 				BlockPos deathPos = player.blockPosition();
 
 				if (this.isThereLava(player.level, deathPos)) {
