@@ -1239,7 +1239,7 @@ public class EnigmaticEventHandler {
 				POSTMORTAL_POSESSIONS.put(player, EnigmaticItems.ASCENSION_AMULET);
 			}
 
-			if (SuperpositionHandler.hasCurio(player, EnigmaticItems.CURSED_STONE || SuperpositionHandler.hasItem(player, EnigmaticItems.CURSED_STONE)) {
+			if (SuperpositionHandler.hasCurio(player, EnigmaticItems.CURSED_STONE || SuperpositionHandler.hasItem(player, EnigmaticItems.CURSED_STONE))) {
 				POSTMORTAL_POSESSIONS.put(player, EnigmaticItems.CURSED_STONE);
 
 				for (List<ItemStack> list : player.getInventory().compartments) {
